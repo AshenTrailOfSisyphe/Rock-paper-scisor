@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+      function start(accepted,refused){
+        if (confirm('Do you want to play?')) {
+            accepted()
+        } else {
+            refused()
+        }
+      }
+
+
+
+
+      
+      function accepted(){
+         let res
+         let plScore =0
+         let cpScore = 0
+        for (let i = 1; i<=5;i++){
+            let a , b
+            a = pInput()
+            b = cpMove()
+            res = compare(a,b)
+            if (res==1){
+                plScore++
+            } else if(res==2){
+                cpScore++
+            } else {
+                
+            }
+            }
+        
+
+        let result
+            if (plScore>cpScore){
+                result = 'won'
+                
+            }else {
+                result = 'lost'
+            }
+            alert ('your score is ' + plScore + ' computer score is ' + cpScore + ' it means you ' + result)
+        }
+      
+
+
+
+
+      function refused(){
+        alert('this is sad')
+      }
+
+
+
+      function pInput(){
+        let choice = prompt('choose beetween rock , paper and scisor')
+        choice = choice.toUpperCase()
+        while ((choice != 'PAPER') && (choice != 'ROCK') && (choice != 'SCISOR')){
+            choice = prompt('choose beetween rock , paper and scisor')
+            choice = choice.toUpperCase()
+        }
+        switch (choice) {
+            case 'ROCK' :
+                return(1)
+            break
+            case 'PAPER' :
+                return(2)
+            break
+            case 'SCISOR' :
+                return(3)
+            
+        }
+      }
+
+      function cpMove(){
+        let choice=(Math.floor(Math.random() * 3 ) + 1)
+        alert('computer choose' + choice)
+        return(choice)
+      }
+
+
+      function compare(pMove,cMove){
+        let pl =0
+        let cp =0
+        if (pMove == 1){
+            switch (cMove){
+                case 1 :
+                   alert('draw')
+                break
+                case 2 : 
+                  alert('LOSE')
+                    cp++
+                break
+                case 3 :
+                  alert('WIN')
+                  pl++
+            }
+        }else if (pMove == 2){
+            switch (cMove){
+                case 1 :
+                    alert('WIN')
+                    pl++
+                break
+                case 2 : 
+                    alert('draw')
+                break
+                case 3 :
+                    alert('LOSE')
+                    cp++
+            }
+        }else {
+            switch (cMove){
+                case 1 :
+                    alert('LOSE')
+                   cp++
+                break   
+                case 2 : 
+                    alert('WIN')
+                    pl++
+                break
+                case 3 :
+                    alert('draw')
+            }
+        }
+        if ((pl==1) && (cp==0) ) {
+         return(1)
+        }else if ((pl==0) && (cp==1)){
+         return(2)
+        }else {
+         return(3)
+        }
+        }
+        
+    
+      start(accepted,refused)
+
+    </script>
+</body>
+</html>
+
+
+
